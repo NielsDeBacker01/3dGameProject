@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(MouseTracker))]
 public class FirstPersonController : MonoBehaviour
 {
 
@@ -20,6 +21,7 @@ public class FirstPersonController : MonoBehaviour
     Transform cameraTransform;
     Vector3 moveDir;
     RaycastHit hit;
+    MouseTracker mouse;
 
 
     void Awake()
@@ -27,6 +29,10 @@ public class FirstPersonController : MonoBehaviour
         if(controlableCamera)
         {
             Screen.lockCursor = true;
+        }
+        else
+        {
+            mouse = this.GetComponent(typeof(MouseTracker)) as MouseTracker;
         }
         cameraTransform = Camera.main.transform;
     }
@@ -40,15 +46,6 @@ public class FirstPersonController : MonoBehaviour
             verticalLookRotation += Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
             verticalLookRotation = Mathf.Clamp(verticalLookRotation, -60, 60);
             cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
-        }
-        else
-        {
-            Vector3 mouse = Input.mousePosition;
-            Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
-            {
-                gameObject.transform.LookAt(hit.point);
-            }
         }
 
         // Calculate movement:
@@ -78,7 +75,6 @@ public class FirstPersonController : MonoBehaviour
         {
             grounded = false;
         }
-        
     }
 
     void FixedUpdate()
@@ -96,6 +92,16 @@ public class FirstPersonController : MonoBehaviour
             rb.MovePosition(localMove + rb.position);
         }
         else
+        {
             rb.MovePosition(hit.point);
+        }
+        
+        if(!controlableCamera){
+            Quaternion rotation = gameObject.transform.rotation;
+            Quaternion old = new Quaternion(rotation.x, 0, rotation.z, rotation.w);
+            gameObject.transform.LookAt(mouse.GetMouse());
+            rotation = gameObject.transform.rotation;
+            gameObject.transform.rotation = new Quaternion(old.x, rotation.y, old.z, rotation.w);
+        }
     }
 }

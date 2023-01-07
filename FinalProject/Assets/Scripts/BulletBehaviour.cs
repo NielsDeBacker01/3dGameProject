@@ -20,8 +20,8 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision hit){
-        if(hit.transform.gameObject.tag.Contains("Player")){
+    void OnTriggerEnter(Collider hit){
+        if((hit.transform.gameObject.tag.Contains("Player") && gameObject.tag == "Deadly") || (hit.transform.gameObject.tag.Contains("Boss") && gameObject.tag == "Friendly")){
             Destroy(gameObject);
         }
     }
