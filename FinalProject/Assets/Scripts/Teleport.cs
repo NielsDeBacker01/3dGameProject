@@ -10,7 +10,7 @@ public class Teleport : MonoBehaviour
     public int edgeMaxZ;
 
     [HideInInspector]
-    public int tpTimer;
+    public float tpTimer;
 
     void Start()
     {
@@ -18,15 +18,15 @@ public class Teleport : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        tpTimer += 1;
+        tpTimer += Time.fixedDeltaTime;
     }
 
     public void RandomTeleport(Vector3 lookat)
     {
-        int x = Random.Range(edgeMinX - 15, edgeMaxX + 15);
-        int z = Random.Range(edgeMinZ - 10, edgeMaxZ + 10);
+        int x = Random.Range(edgeMinX - 10, edgeMaxX + 10);
+        int z = Random.Range(edgeMinZ - 8, edgeMaxZ + 8);
         if( ( edgeMinX < x && x < edgeMaxX  ) && ( edgeMinZ < z && z < edgeMaxZ ) )
         {
             RandomTeleport(lookat);

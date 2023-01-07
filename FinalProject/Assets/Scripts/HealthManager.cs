@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
+    public bool showHP;
     public int maxHp;
     public int currentHp;
+    public TextMeshProUGUI hpText;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +26,17 @@ public class HealthManager : MonoBehaviour
                 GameObject.Destroy(gameObject);
             }   
         }
-    }
 
-    
+        if(hpText != null)
+        {
+            if(showHP)
+            {
+                hpText.text = currentHp.ToString() + " / " + maxHp.ToString();
+            }
+            else
+            {
+                hpText.text = "";
+            }
+        } 
+    }
 }

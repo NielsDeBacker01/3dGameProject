@@ -8,11 +8,11 @@ using UnityEngine;
 public class BossBehaviour : MonoBehaviour
 {
 
-    public int TpCooldown;
+    public float TpCooldown;
     [Range(0, 90)]
     public int BulletSpread;
 
-    int shootCooldown;
+    float shootCooldown;
     HealthManager hp;
     Teleport tp;
     ShootScript shoot;
@@ -26,18 +26,19 @@ public class BossBehaviour : MonoBehaviour
         shoot = this.GetComponent(typeof(ShootScript)) as ShootScript;
         middle = Terrain.activeTerrain.terrainData.size / 2;
         middle.y = 0;
+        shootCooldown = TpCooldown / 3;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(TpCooldown <= tp.tpTimer)
         {
             tp.RandomTeleport(middle);
-            shootCooldown = TpCooldown / 2;
+            shootCooldown = TpCooldown / 3;
         }
 
-        if(shootCooldown == 0)
+        if(shootCooldown <= 0)
         {
             Vector3 target = GenerateTarget();
             for(int i = -BulletSpread; i <= BulletSpread; i += BulletSpread)
@@ -46,11 +47,12 @@ public class BossBehaviour : MonoBehaviour
                 shootCooldown = TpCooldown / 4;
             }
         }
-        shootCooldown -= 1;
+
+        shootCooldown -= Time.fixedDeltaTime;
     }
 
     Vector3 GenerateTarget(){
-        return new Vector3(Random.Range((int)middle.x - middle.x/2, (int)middle.x + middle.x/2), 0 ,Random.Range((int)middle.z - middle.z/2, (int)middle.z + middle.z/2));
+        return new Vector3(Random.Range((int)(middle.x - middle.x * 0.75), (int)(middle.x + middle.x * 0.75)), 0 ,Random.Range((int)(middle.z - middle.z * 0.75), (int)(middle.z + middle.z * 0.75)));
     }
 
     void OnTriggerEnter(Collider hit){

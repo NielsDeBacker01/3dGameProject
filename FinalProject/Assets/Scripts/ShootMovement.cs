@@ -16,7 +16,7 @@ public class ShootMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(DoShoot){
             rb.AddForce(gameObject.transform.forward * Speed);

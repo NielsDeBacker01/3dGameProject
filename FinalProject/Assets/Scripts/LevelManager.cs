@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     static string currentScene;
+    static int levelIndex;
     static bool UIActive;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,13 @@ public class LevelManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Return)){
                 Reload();
             }
+        } 
+        else 
+        {
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+                UIActive = (UIActive) ? false : true;
+            }
         }
     }
 
@@ -30,5 +38,9 @@ public class LevelManager : MonoBehaviour
 
     public static void Reload(){
         SceneManager.LoadScene(currentScene);
+    }
+
+    public static bool GetPause(){
+        return UIActive;
     }
 }
