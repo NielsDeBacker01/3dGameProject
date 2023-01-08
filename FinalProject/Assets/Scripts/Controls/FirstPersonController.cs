@@ -7,6 +7,7 @@ public class FirstPersonController : MonoBehaviour
 
     // public vars
     public bool controlableCamera = true;
+    public bool hardStop = false;
     public float mouseSensitivityX = 250;
     public float mouseSensitivityY = 250;
     public float walkSpeed = 6;
@@ -22,6 +23,7 @@ public class FirstPersonController : MonoBehaviour
     Vector3 moveDir;
     RaycastHit hit;
     MouseTracker mouse;
+    Rigidbody rb;
 
 
     void Awake()
@@ -34,6 +36,7 @@ public class FirstPersonController : MonoBehaviour
         {
             mouse = this.GetComponent(typeof(MouseTracker)) as MouseTracker;
         }
+        rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
     }
 
@@ -51,6 +54,13 @@ public class FirstPersonController : MonoBehaviour
         // Calculate movement:
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
+
+        if(hardStop){
+            if(inputX == 0 && inputY == 0)
+            {
+                rb.velocity = Vector3.zero;
+            }
+        }
 
         moveDir = new Vector3(inputX, 0, inputY).normalized;
         Vector3 targetMoveAmount = moveDir * walkSpeed;
@@ -82,8 +92,6 @@ public class FirstPersonController : MonoBehaviour
         // Apply movement to rigidbody
         Vector3 localMove = controlableCamera ? transform.TransformDirection(moveAmount) : moveAmount;
         localMove *= Time.fixedDeltaTime;
-
-        Rigidbody rb = GetComponent<Rigidbody>();
 
         Ray ray = new Ray(rb.position, localMove);
         RaycastHit hit;

@@ -585,7 +585,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -742,7 +742,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 55145b08a3de00442be399c480761b44, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8013586b54314f90c6a8ac7c2d384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: 30
+  BulletSpeed: 50
   maxBullets: 0
   UnlimitedBullets: 1
   currentBullets: 0
@@ -1438,8 +1438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showHP: 1
-  maxHp: 20
-  currentHp: 20
+  maxHp: 50
+  currentHp: 50
   hpText: {fileID: 1967455829}
   pretext: 'Boss '
 --- !u!114 &1162273303
@@ -2228,6 +2228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlableCamera: 0
+  hardStop: 1
   mouseSensitivityX: 250
   mouseSensitivityY: 250
   walkSpeed: 20
@@ -2248,8 +2249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showHP: 1
-  maxHp: 3
-  currentHp: 3
+  maxHp: 10
+  currentHp: 10
   hpText: {fileID: 854935574}
   pretext: 'Player '
 --- !u!114 &1938938876
@@ -2264,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e2b2a9e4466c744961a2cf6fb87e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootCooldown: 50
+  ShootCooldown: 20
 --- !u!114 &1938938877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2277,10 +2278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8013586b54314f90c6a8ac7c2d384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: 200
-  maxBullets: 5
+  BulletSpeed: 300
+  maxBullets: 10
   UnlimitedBullets: 0
-  currentBullets: 5
+  currentBullets: 10
   bulletText: {fileID: 654675425}
   showBullets: 1
 --- !u!65 &1938938878
@@ -2356,7 +2357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -160, y: -35}
+  m_AnchoredPosition: {x: -180, y: -35}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967455829
@@ -2379,7 +2380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Boss HP: 0 / 0'
+  m_text: 'Boss HP: 50 / 50'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
