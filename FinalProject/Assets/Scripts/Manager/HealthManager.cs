@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public int maxHp;
     public int currentHp;
     public TextMeshProUGUI hpText;
+    public string pretext;
 
     // Update is called once per frame
     void Update()
@@ -31,11 +32,12 @@ public class HealthManager : MonoBehaviour
         {
             if(showHP)
             {
-                hpText.text = currentHp.ToString() + " / " + maxHp.ToString();
+                hpText.enabled = true;
+                hpText.text = pretext + "HP: " + currentHp.ToString() + " / " + maxHp.ToString();
             }
             else
             {
-                hpText.text = "";
+                hpText.enabled = false;
             }
         } 
     }

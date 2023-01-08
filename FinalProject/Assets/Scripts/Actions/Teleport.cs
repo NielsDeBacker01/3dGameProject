@@ -8,6 +8,8 @@ public class Teleport : MonoBehaviour
     public int edgeMaxX;
     public int edgeMinZ;
     public int edgeMaxZ;
+    public int xDeadzone;
+    public int zDeadzone;
 
     [HideInInspector]
     public float tpTimer;
@@ -25,9 +27,9 @@ public class Teleport : MonoBehaviour
 
     public void RandomTeleport(Vector3 lookat)
     {
-        int x = Random.Range(edgeMinX - 10, edgeMaxX + 10);
-        int z = Random.Range(edgeMinZ - 8, edgeMaxZ + 8);
-        if( ( edgeMinX < x && x < edgeMaxX  ) && ( edgeMinZ < z && z < edgeMaxZ ) )
+        int x = Random.Range(edgeMinX, edgeMaxX);
+        int z = Random.Range(edgeMinZ, edgeMaxZ);
+        if( ( edgeMinX + xDeadzone < x && x < edgeMaxX - xDeadzone ) && ( edgeMinZ + zDeadzone < z && z < edgeMaxZ - zDeadzone) )
         {
             RandomTeleport(lookat);
         } 

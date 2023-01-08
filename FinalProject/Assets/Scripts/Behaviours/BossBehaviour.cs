@@ -11,7 +11,6 @@ public class BossBehaviour : MonoBehaviour
     public float TpCooldown;
     [Range(0, 90)]
     public int BulletSpread;
-
     float shootCooldown;
     HealthManager hp;
     Teleport tp;
@@ -58,6 +57,7 @@ public class BossBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider hit){
         if(hit.transform.gameObject.tag.Contains("Friendly")){
             this.hp.currentHp--;
+            Destroy(hit.gameObject);
         }
     }
 }

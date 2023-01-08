@@ -27,8 +27,10 @@ public class PlayerBehaviour : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             if(shootCooldown <= 0)
             {
-                shoot.Shoot(0, mouse.GetMouse(), "Friendly");
-                shootCooldown = ShootCooldown;
+                if(shoot.Shoot(0, mouse.GetMouse(), "Friendly"))
+                {
+                    shootCooldown = ShootCooldown;
+                }
             }
         }
 
@@ -38,6 +40,12 @@ public class PlayerBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider hit){
         if(hit.transform.gameObject.tag.Contains("Deadly")){
             this.hp.currentHp--;
+            Destroy(hit.gameObject);
+        }
+
+        if(hit.transform.gameObject.tag.Contains("Ammo")){
+            this.shoot.currentBullets += hit.GetComponent<PickupBehaviour>().ammoCount;
+            Destroy(hit.gameObject);
         }
     }
 }
