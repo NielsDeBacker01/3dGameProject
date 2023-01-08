@@ -43,7 +43,7 @@ public class BossBehaviour : MonoBehaviour
             for(int i = -BulletSpread; i <= BulletSpread; i += BulletSpread)
             {
                 shoot.Shoot(i, target, "Deadly");
-                shootCooldown = TpCooldown * (2f/(18 - ( 3 * (Mathf.Floor(this.hp.currentHp / 10f) + 1))));
+                shootCooldown = TpCooldown * (2f/(18 - ( 3 * (Mathf.Floor((this.hp.currentHp - 1) / 10f) + 1))));
             }
         }
 
