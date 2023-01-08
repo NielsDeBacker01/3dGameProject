@@ -16,7 +16,7 @@ public class ShootScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {     
-        Bullet = AssetDatabase.LoadAssetAtPath("Assets/Prefab/Bullet.prefab", typeof(GameObject)) as GameObject;
+        Bullet = Resources.Load<GameObject>("Bullet");
     }
 
     // Update is called once per frame

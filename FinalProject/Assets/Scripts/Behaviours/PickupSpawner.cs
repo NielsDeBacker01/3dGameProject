@@ -13,7 +13,7 @@ public class PickupSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        Ammo = AssetDatabase.LoadAssetAtPath("Assets/Prefab/PickupAmmo.prefab", typeof(GameObject)) as GameObject; 
+        Ammo = Resources.Load<GameObject>("PickupAmmo");; 
         middle = Terrain.activeTerrain.terrainData.size / 2;
         middle.y = 0;   
         middle.x -= Ammo.transform.localScale.x / 2;
