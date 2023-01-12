@@ -1,25 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class UIBehaviour : MonoBehaviour
 {
     // Update is called once per frame
-    TextMeshProUGUI tmp;
+    Canvas canvas;
+    public UIValues ui;
+    public UnityEvent myEvent;
+    public bool gameUI = false;
     void Start()
     {
-        tmp = gameObject.GetComponent<TextMeshProUGUI>();
+        canvas = gameObject.GetComponent<Canvas>();
     }
     void Update()
     {
-        if(LevelManager.GetPause())
+        if(ui.UIActive)
         {
-            tmp.enabled = true;
+            this.canvas.enabled = !gameUI;
         }
         else
         {
-            tmp.enabled = false;
+            this.canvas.enabled = gameUI;
         }
+    }
+
+    public void executeEvent() {
+        myEvent.Invoke();
     }
 }

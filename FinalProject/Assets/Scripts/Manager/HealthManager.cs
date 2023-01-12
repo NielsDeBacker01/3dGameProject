@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HealthManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class HealthManager : MonoBehaviour
 
         if(currentHp <= 0){
             if(gameObject.tag.Contains("Player")){
-                LevelManager.GameOver();
+                SceneManager.LoadScene("GameOverScene");
             }
             else
             {

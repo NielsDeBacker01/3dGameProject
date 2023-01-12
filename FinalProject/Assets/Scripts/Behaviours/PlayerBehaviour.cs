@@ -12,6 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
     MouseTracker mouse;
     public int ShootCooldown;
     int shootCooldown;
+    private bool shotted;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +22,26 @@ public class PlayerBehaviour : MonoBehaviour
         mouse = this.GetComponent(typeof(MouseTracker)) as MouseTracker;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0)){
             if(shootCooldown <= 0)
             {
-                if(shoot.Shoot(0, mouse.GetMouse(), "Friendly"))
-                {
-                    shootCooldown = ShootCooldown;
-                }
+                shotted = true;
             }
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if(shotted)
+        {
+            if(shoot.Shoot(0, mouse.GetMouse(), "Friendly"))
+            {
+                shootCooldown = ShootCooldown;
+            }
+            shotted = false;
         }
 
         shootCooldown -= 1;

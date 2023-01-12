@@ -57,6 +57,8 @@ public class BossBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider hit){
         if(hit.transform.gameObject.tag.Contains("Friendly")){
             this.hp.currentHp--;
+            if(this.hp.currentHp % 10 == 0)
+            this.shoot.BulletSpeed -= 5;
             Destroy(hit.gameObject);
         }
     }
