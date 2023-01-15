@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (health <= 0)
         {
-            GetComponent<PlayerMovement>().enabled = false;
+            GetComponent<Part1Movement>().enabled = false;
             FindObjectOfType<GameManager>().GameOver();
         }
     }
