@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 8967023828852078816}
-  target: {fileID: 4426132479550890455, guid: 0e7b1e95e7a598842b10450dabe7c6e9, type: 3}
 --- !u!114 &8967023828852078819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSound: {fileID: 0}
   particle: {fileID: 5440567603706967814, guid: 540b634ca6f25b24d832404bb7a927d3, type: 3}
-  drop: {fileID: 2007357597031071821, guid: da410aefd7e270c44967f2ada5def2d3, type: 3}
 --- !u!54 &8967023828852078817
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,7 +154,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.49999997
-  m_Speed: 4
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

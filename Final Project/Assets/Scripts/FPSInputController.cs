@@ -64,7 +64,7 @@ public class FPSInputController : MonoBehaviour
         Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + localMove);
         if (localMove.x != 0 || localMove.z != 0) animation.SetBool("run", true);
-        if (localMove.z == 0 && localMove.x == 0) animation.SetBool("run", false);
+        if ((localMove.z <.05 && localMove.x <.05)&& (localMove.z > -.05 && localMove.x >- .05)) animation.SetBool("run", false);
 
     }
 }
