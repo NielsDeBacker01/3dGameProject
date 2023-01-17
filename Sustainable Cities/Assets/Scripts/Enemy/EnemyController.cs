@@ -5,6 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
+    public GameObject raptor;
     public LayerMask ground, character;
 
     [Header("Patrol")]
@@ -22,6 +23,8 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
+        raptor = GameObject.Find("Raptor");
+        animator = raptor.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -38,6 +41,11 @@ public class EnemyController : MonoBehaviour
 
     private void Patrolling()
     {
+        // animation
+        animator.SetBool("Run", false);
+
+        agent.speed = 3f;
+
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -48,9 +56,6 @@ public class EnemyController : MonoBehaviour
         // walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
-
-        // animation
-
     }
 
     private void SearchWalkPoint()
@@ -67,10 +72,11 @@ public class EnemyController : MonoBehaviour
 
     private void Chase()
     {
+        agent.speed = 8f;
         agent.SetDestination(player.position);
 
         // animation
-
+        animator.SetBool("Run", true);
     }
 
     private void Attack()
@@ -85,7 +91,8 @@ public class EnemyController : MonoBehaviour
 
             alreadyAttacked = true;
             // animation
-
+            animator.SetBool("Run", false);
+            animator.SetBool("Attack", true);
             Invoke(nameof(ResetAttack), attackCd);
         }
     }
@@ -93,6 +100,7 @@ public class EnemyController : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        animator.SetBool("Attack", false);
     }
 
     private void OnDrawGizmosSelected()

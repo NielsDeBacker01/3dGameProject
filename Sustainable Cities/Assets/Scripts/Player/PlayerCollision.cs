@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public HealthBar healthBar;
     public int maxHealth = 3;
     public int currentHealth;
-
-    public HealthBar healthBar;
 
     private void Start()
     {
