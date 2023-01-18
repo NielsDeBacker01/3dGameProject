@@ -9,6 +9,7 @@ public class PlayerCamera : MonoBehaviour
     public float sensY;
 
     public Transform orientation;
+    public Transform GUN;
 
     float xRotation;
     float yRotation;
@@ -20,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
@@ -33,5 +34,6 @@ public class PlayerCamera : MonoBehaviour
         //rotate
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        GUN.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 }
