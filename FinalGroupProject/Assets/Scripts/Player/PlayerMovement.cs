@@ -90,9 +90,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider hit){
-    if(hit.transform.gameObject.tag.Contains("boss")){
+    if(hit.transform.gameObject.tag.Contains("enemy")){
         this.hp.currentHp--;
-        Destroy(hit.gameObject);
         }
     }
 }

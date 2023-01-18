@@ -7,8 +7,6 @@ public class Shoot : MonoBehaviour
     public GameObject blast;
     public float cooldown = 2f;
     public int shootForce=10;
-    public int ammo=10;
-    public int ammoLimit=10;
     float timer = 10f;
     bool started = false;
 
@@ -22,10 +20,9 @@ public class Shoot : MonoBehaviour
     void FixedUpdate()
     {
         float shoot = Input.GetAxis("Fire1");
-        if (shoot == 1 && timer >= cooldown&&ammo>0)
+        if (shoot == 1 && timer >= cooldown)
         {
             started = true;
-            ammo--;
             GameObject trashBlast = Instantiate(blast, transform.position, transform.rotation);
             trashBlast.GetComponent<Rigidbody>().AddForce(shootForce*transform.forward);
             timer = 0;
@@ -42,10 +39,5 @@ public class Shoot : MonoBehaviour
                 started = false;
             }
         }
-    }
-    public void GetAmmo()
-    {
-        if(ammo<ammoLimit)
-        ammo++;
     }
 }
