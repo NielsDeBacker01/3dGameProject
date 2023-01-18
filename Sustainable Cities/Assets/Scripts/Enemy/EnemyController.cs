@@ -5,7 +5,6 @@ public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
-    public GameObject raptor;
     public LayerMask ground, character;
 
     [Header("Patrol")]
@@ -17,14 +16,9 @@ public class EnemyController : MonoBehaviour
     public float attackCd, attackRange;
     bool alreadyAttacked, playerInAttackRange;
 
-    [Header("Animations")]
-    public Animator animator;
-
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
-        raptor = GameObject.Find("Raptor");
-        animator = raptor.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -39,11 +33,8 @@ public class EnemyController : MonoBehaviour
         if (playerInAttackRange && playerInSightRange) Attack();
     }
 
-    private void Patrolling()
+    public void Patrolling()
     {
-        // animation
-        animator.SetBool("Run", false);
-
         agent.speed = 3f;
 
         if (!walkPointSet) SearchWalkPoint();
@@ -70,16 +61,13 @@ public class EnemyController : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void Chase()
+    public void Chase()
     {
         agent.speed = 8f;
         agent.SetDestination(player.position);
-
-        // animation
-        animator.SetBool("Run", true);
     }
 
-    private void Attack()
+    public void Attack()
     {
         // make sure enemy stops moving
         agent.SetDestination(transform.position);
@@ -90,9 +78,6 @@ public class EnemyController : MonoBehaviour
             // attack code here
 
             alreadyAttacked = true;
-            // animation
-            animator.SetBool("Run", false);
-            animator.SetBool("Attack", true);
             Invoke(nameof(ResetAttack), attackCd);
         }
     }
@@ -100,7 +85,6 @@ public class EnemyController : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-        animator.SetBool("Attack", false);
     }
 
     private void OnDrawGizmosSelected()

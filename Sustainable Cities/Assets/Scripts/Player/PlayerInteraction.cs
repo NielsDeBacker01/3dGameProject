@@ -6,20 +6,30 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class PlayerInteraction : MonoBehaviour
 {
     public GameManager manager;
+
+    [Header("Health")]
+    public HealthBar healthBar;
+    public int maxHealth = 3;
+    public int currentHealth;
+
+    [Header("Watertank")]
     public WaterBar waterTank;
     public int maxWater = 6;
     public int currentWater;
+
     private GameObject[] objects;
     private int counter;
     private bool change = false;
+    private bool isHit;
 
     private void Start()
     {
         currentWater = 0;
+        currentHealth = maxHealth;
         counter = 0;
         waterTank.SetMaxWater(maxWater);
+        healthBar.SetMaxHealth(maxHealth);
         objects = GameObject.FindGameObjectsWithTag("Change");
-
     }
 
     private void Update()
@@ -53,5 +63,19 @@ public class PlayerInteraction : MonoBehaviour
                 objects[counter + 1].GetComponent<MeshRenderer>().enabled = true;
             }
         }
+
+        if (collision.collider.tag == "Obstacle" && isHit == false)
+        {
+            currentHealth--;
+            healthBar.SetHealth(currentHealth);
+            isHit = true;
+
+            Invoke(nameof(ResetHit), 2);
+        }
+    }
+
+    private void ResetHit()
+    {
+        isHit = false;
     }
 }
