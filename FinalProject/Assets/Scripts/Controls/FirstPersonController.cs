@@ -24,6 +24,7 @@ public class FirstPersonController : MonoBehaviour
     RaycastHit hit;
     MouseTracker mouse;
     Rigidbody rb;
+    Animator animator;
 
 
     void Awake()
@@ -38,6 +39,8 @@ public class FirstPersonController : MonoBehaviour
         }
         rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
+        animator = this.GetComponentInChildren<Animator>();
+
     }
 
     void Update()
@@ -111,5 +114,9 @@ public class FirstPersonController : MonoBehaviour
             rotation = gameObject.transform.rotation;
             gameObject.transform.rotation = new Quaternion(old.x, rotation.y, old.z, rotation.w);
         }
+
+        //animationCheck
+        if (localMove.x != 0 || localMove.z != 0) animator.SetBool("Run", true);
+        if ((localMove.z <.05 && localMove.x <.05)&& (localMove.z > -.05 && localMove.x >- .05)) animator.SetBool("Run", false);
     }
 }
