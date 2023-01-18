@@ -7,7 +7,6 @@ TagManager:
   - Ocean
   - bullet
   - enemy
-  - boss
   layers:
   - Default
   - TransparentFX
