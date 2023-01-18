@@ -26,9 +26,12 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    [Header("Enemy")]
+    [Header("HP related")]
     public float timer = 1f;
     public int damageTaken = 0;
+    
+    public GameObject PlayerCam;
+    private bool isUnderwater;
 
     void Start()
     {
@@ -36,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToSwim = true;
+
+        PlayerCam = GameObject.Find("Player/CameraHolder/PlayerCam");
     }
 
     private void Update()
@@ -48,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
     {
         timer += Time.deltaTime;
         MovePlayer();
+        
+        isUnderwater = PlayerCam.GetComponent<Underwater>().isUnderwater;
         Oxygen();
     }
 
@@ -97,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Oxygen(){
         timer += Time.deltaTime;
-        if (Mathf.Round(timer)%3==0){
+        if (Mathf.Round(timer)%3==0 && isUnderwater){
             this.hp.currentHp--;
             timer = 1f;
         }
