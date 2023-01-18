@@ -54,6 +54,7 @@ public class FPSInputController : MonoBehaviour
         else
         {
             grounded = false;
+            animation.SetBool("run", false);
         }
 
     }

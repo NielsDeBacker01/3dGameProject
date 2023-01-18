@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 858495ccfed4cea4f87d0e124f839fd6
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Yabukuronout(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mesh0000
+      parentName: Yabukuronout(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mesh0001
+      parentName: Yabukuronout(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Yabukuron
+      parentName: Yabukuronout(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Origin
+      parentName: Yabukuron
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.5336146, y: -0, z: -0, w: 0.84572786}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Waist
+      parentName: Origin
+      position: {x: -0, y: 0, z: 1.95485}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Waist
+      position: {x: 0.165166, y: 1.17861, z: -0.178353}
+      rotation: {x: -0.14776836, y: -0.008766135, z: -0.058565743, w: 0.9872476}
+      scale: {x: 0.9999996, y: 0.99999976, z: 0.99999976}
+    - name: LEar
+      parentName: Head
+      position: {x: -0.072572, y: 0.60947, z: -0.493115}
+      rotation: {x: 0.14768828, y: 0.01002364, z: 0.05015601, w: 0.98771054}
+      scale: {x: 1.0000002, y: 0.9999999, z: 0.99999964}
+    - name: REar
+      parentName: Head
+      position: {x: -0.063747, y: 0.535348, z: 0.183616}
+      rotation: {x: 0.14768828, y: 0.01002364, z: 0.05015601, w: 0.98771054}
+      scale: {x: 1.0000002, y: 0.9999999, z: 0.99999964}
+    - name: Jaw
+      parentName: Waist
+      position: {x: -0.593228, y: -0.638169, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LJaw2
+      parentName: Jaw
+      position: {x: 0.02908, y: 1.49292, z: -0.486838}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerJaw
+      parentName: Jaw
+      position: {x: -0.574527, y: 1.44283, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RJaw2
+      parentName: Jaw
+      position: {x: 0.02908, y: 1.49292, z: 0.486838}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Teeth
+      parentName: Jaw
+      position: {x: 0.623663, y: 1.64354, z: -0.000007}
+      rotation: {x: -0.63318086, y: 0.77400386, z: 0.00000003964827, w: -0.00006075564}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: UpperJaw
+      parentName: Jaw
+      position: {x: 0.59771, y: 1.692, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LArm
+      parentName: Waist
+      position: {x: 0.165166, y: -0.903483, z: -2.05713}
+      rotation: {x: -0.50217694, y: -0.49781364, z: -0.49781346, w: 0.50217694}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LForeArm
+      parentName: LArm
+      position: {x: -0, y: 1.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LThigh
+      parentName: Waist
+      position: {x: 0.165166, y: 1.38422, z: -0.97846}
+      rotation: {x: 1, y: 0, z: -0, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LFoot
+      parentName: LThigh
+      position: {x: -0, y: 2.8767, z: 0}
+      rotation: {x: 0, y: 0, z: 0.50948316, w: 0.86048067}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: LToe
+      parentName: LFoot
+      position: {x: -0, y: 0.622079, z: 0}
+      rotation: {x: 0, y: 0, z: 0.24819273, w: 0.9687107}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: RArm
+      parentName: Waist
+      position: {x: 0.165166, y: -0.903483, z: 2.05713}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RForeArm
+      parentName: RArm
+      position: {x: -0, y: 1.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RThigh
+      parentName: Waist
+      position: {x: 0.165166, y: 1.38422, z: 0.97846}
+      rotation: {x: 1, y: 0, z: -0, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RFoot
+      parentName: RThigh
+      position: {x: -0, y: 2.8767, z: 0}
+      rotation: {x: 0, y: 0, z: 0.5094829, w: 0.8604808}
+      scale: {x: 0.9999994, y: 1.0000002, z: 1}
+    - name: RToe
+      parentName: RFoot
+      position: {x: -0, y: 0.622079, z: 0}
+      rotation: {x: 0, y: 0, z: 0.24819297, w: 0.96871066}
+      scale: {x: 0.9999994, y: 1.0000002, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

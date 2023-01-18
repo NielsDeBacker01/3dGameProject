@@ -34,6 +34,7 @@ public class Killed : MonoBehaviour
                 }
             }
             GameObject.Find("Player").GetComponent<Shoot>().GetAmmo();
+            GameObject.Find("Player").GetComponent<Player>().UpdatePoint();
             GameObject.Find("SpawnPoints").GetComponent<SpawnScript>().enemies.Remove(gameObject);
             Destroy(gameObject);
         }

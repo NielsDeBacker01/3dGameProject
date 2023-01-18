@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnScript : MonoBehaviour
 {
-    List<Spawn> spawnPoints;
+    List<GameObject> spawnPoints;
     public List<GameObject> enemies;
     public TextMeshProUGUI enemyNr;
     public GameObject enemy;
@@ -14,35 +14,34 @@ public class SpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        spawnPoints = new List<Spawn>();
+        spawnPoints = new List<GameObject>();
         enemies = new List<GameObject>();
 
-        spawnPoints.AddRange(GetComponentsInChildren<Spawn>());
+        spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawn"));
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (timer > 10/*&&enemies.Count<=150*/)
+        if (timer > 10&&enemies.Count<=500)
         {
             timer = 0;
             if(count<=5)
             count++;
             for (int i = 0; i < count*10; i++)
             {
-                Spawn();
+                Spawn(Random.Range(0,10));
             }
         }
         enemyNr.text = $"Enemies: {enemies.Count}";
     }
-    public void Spawn()
+    public void Spawn(int index)
     {
-        int index = Random.Range(0, 50);
-        Spawn newSpawn = spawnPoints[index];
+        print(index);
         GameObject trash=Instantiate(enemy, transform.position, transform.rotation);
         enemies.Add(trash);
         trash.transform.parent = GameObject.Find("Terrain").transform;
-        trash.transform.position = newSpawn.transform.position;
+        trash.transform.position = spawnPoints[index].transform.position;
     }
 }
