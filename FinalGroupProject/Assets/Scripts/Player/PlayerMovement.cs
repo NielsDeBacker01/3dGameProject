@@ -26,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    [Header("Enemy")]
+    public float timer = 1f;
+    public int damageTaken = 0;
+
     void Start()
     {
         hp = this.GetComponent(typeof(HealthManager)) as HealthManager;
@@ -42,7 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        timer += Time.deltaTime;
         MovePlayer();
+        Oxygen();
     }
 
     private void MyInput()
@@ -89,9 +95,17 @@ public class PlayerMovement : MonoBehaviour
         readyToSwim = true;
     }
 
+    void Oxygen(){
+        timer += Time.deltaTime;
+        if (Mathf.Round(timer)%3==0){
+            this.hp.currentHp--;
+            timer = 1f;
+        }
+    }
+
     void OnTriggerEnter(Collider hit){
-    if(hit.transform.gameObject.tag.Contains("enemy")){
-        this.hp.currentHp--;
+        if(hit.transform.gameObject.tag.Contains("enemy")){
+        this.hp.currentHp-=damageTaken;
         }
     }
 }
