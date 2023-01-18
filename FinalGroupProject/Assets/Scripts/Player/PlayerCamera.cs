@@ -9,7 +9,7 @@ public class PlayerCamera : MonoBehaviour
     public float sensY;
 
     public Transform orientation;
-    public Transform GUN;
+    public Transform gun;
 
     float xRotation;
     float yRotation;
@@ -34,6 +34,6 @@ public class PlayerCamera : MonoBehaviour
         //rotate
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        GUN.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        gun.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 }

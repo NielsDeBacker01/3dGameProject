@@ -16,7 +16,7 @@ using UnityEngine;
  }
  
  // Update is called once per frame
- void Update () {
+ void FixedUpdate () {
  if ((transform.position.y < waterHeight) != isUnderwater) {
  isUnderwater = transform.position.y < waterHeight;
  if (isUnderwater) SetUnderwater ();

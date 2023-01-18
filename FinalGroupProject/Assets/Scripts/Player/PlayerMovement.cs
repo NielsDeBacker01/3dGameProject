@@ -5,23 +5,17 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    HealthManager hp;
+
     [Header("Movement")]
     public float moveSpeed;
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
-    bool readyToJump;
-
-    [HideInInspector] public float walkSpeed;
-    [HideInInspector] public float sprintSpeed;
+    public float swimForce;
+    public float swimCooldown;
+    public float swimMultiplier;
+    bool readyToSwim;
 
     [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded;
+    public KeyCode swimKey = KeyCode.Space;
 
     public Transform orientation;
 
@@ -32,19 +26,16 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    private void Start()
+    void Start()
     {
+        hp = this.GetComponent(typeof(HealthManager)) as HealthManager;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
-        readyToJump = true;
+        readyToSwim = true;
     }
 
     private void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
-
         MyInput();
         SpeedControl();
     }
@@ -59,14 +50,12 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump /*&& grounded*/)
+        // when to swim
+        if(Input.GetKey(swimKey) && readyToSwim)
         {
-            readyToJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
+            readyToSwim = false;
+            Swim();
+            Invoke(nameof(ResetSwim), swimCooldown);
         }
     }
 
@@ -74,14 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        // on ground
-        if(grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
-        // in air
-        else if(!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f * swimMultiplier, ForceMode.Force);
     }
 
     private void SpeedControl()
@@ -96,15 +78,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void Swim()
     {
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up * swimForce, ForceMode.Impulse);
     }
-    private void ResetJump()
+    private void ResetSwim()
     {
-        readyToJump = true;
+        readyToSwim = true;
+    }
+
+    void OnTriggerEnter(Collider hit){
+    if(hit.transform.gameObject.tag.Contains("boss")){
+        this.hp.currentHp--;
+        Destroy(hit.gameObject);
+        }
     }
 }

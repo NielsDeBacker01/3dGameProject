@@ -10,7 +10,6 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody rb;
     public float speed = 10;
     public float multiplier = 10;
-    public float speed_limit = 2;
     public float timer = 0f;
     public float delay;
     // Start is called before the first frame update
