@@ -5,7 +5,7 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    public int health = 20;
+    public int health = 10;
     private int points;
     private int pointsNeeded = 500;
     public TextMeshProUGUI text;

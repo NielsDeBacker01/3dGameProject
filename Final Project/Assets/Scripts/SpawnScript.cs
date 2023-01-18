@@ -24,14 +24,14 @@ public class SpawnScript : MonoBehaviour
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (timer > 10&&enemies.Count<=500)
+        if (timer > 5&&enemies.Count<=500)
         {
             timer = 0;
-            if(count<=5)
+            if(count<=6)
             count++;
             for (int i = 0; i < count*10; i++)
             {
-                Spawn(Random.Range(0,10));
+                Spawn(Random.Range(0,50));
             }
         }
         enemyNr.text = $"Enemies: {enemies.Count}";
