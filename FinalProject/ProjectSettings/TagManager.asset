@@ -10,6 +10,11 @@ TagManager:
   - Friendly
   - Boss
   - Ammo
+  - bullet
+  - Spawn
+  - Ground
+  - Obstacle
+  - enemy
   layers:
   - Default
   - TransparentFX

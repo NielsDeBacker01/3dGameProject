@@ -40,7 +40,8 @@ public class FirstPersonController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
         animator = this.GetComponentInChildren<Animator>();
-
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()

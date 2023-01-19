@@ -13,4 +13,9 @@ public class LevelEvent : MonoBehaviour
         gameValues.currentScene = nextLevel;
         SceneManager.LoadScene(gameValues.currentScene);
     }
+
+    public void gameOver(){
+        gameValues.currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("GameOverScene");
+    }
 }

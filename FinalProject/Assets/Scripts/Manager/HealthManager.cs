@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+[RequireComponent(typeof(LevelEvent))]
 public class HealthManager : MonoBehaviour
 {
     public bool showHP;
@@ -11,6 +12,12 @@ public class HealthManager : MonoBehaviour
     public int currentHp;
     public TextMeshProUGUI hpText;
     public string pretext;
+    LevelEvent levelEvent; 
+
+    void Start()
+    {
+        levelEvent = this.GetComponent(typeof(LevelEvent)) as LevelEvent;
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,7 +28,11 @@ public class HealthManager : MonoBehaviour
 
         if(currentHp <= 0){
             if(gameObject.tag.Contains("Player")){
-                SceneManager.LoadScene("GameOverScene");
+                levelEvent.gameOver();
+            }
+            else if(gameObject.tag.Contains("Boss") || gameObject.tag.Contains("enemy"))
+            {
+                levelEvent.loadNextLevel();
             }
             else
             {
